@@ -109,8 +109,8 @@ resource "azurerm_windows_virtual_machine" "myvm" {
   resource_group_name = local.azurerm_resource_group.name
   location            = local.azurerm_resource_group.location
   size                = "Standard_D2S_v3"
-  admin_username      = "ur2close2me"
-  admin_password      = "AZcloud@2023"
+  admin_username      = azurerm_key_vault_secret.ur2close2me.name
+  admin_password      = azurerm_key_vault_secret.ur2close2me.value
   network_interface_ids = [
     azurerm_network_interface.mynic.id,
   ]
